@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-
+import React, { useState, useEffect } from 'react';
 
 function App() {
   const [formData, setFormData] = useState({
@@ -10,6 +9,28 @@ function App() {
     mensagem: ''
   });
   const [submitted, setSubmitted] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+  // Verificar se está em dispositivo móvel
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+      if (window.innerWidth >= 768) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Fechar menu ao clicar em um link
+  const handleNavClick = () => {
+    if (isMobile) {
+      setIsMenuOpen(false);
+    }
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -58,6 +79,7 @@ function App() {
       top: 0,
       behavior: 'smooth'
     });
+    handleNavClick();
   };
 
   // Função para abrir o Instagram
@@ -114,18 +136,32 @@ function App() {
       {/* Header */}
       <header className="header">
         <div className="container">
-          <div className="logo">
-          <img 
-            src="/images/logo.png"
-            alt="Logo Unik Móveis Planejados"
-            className="mentor-photo"
-          />
-        </div>
-          <nav className="nav">
-            <a href="#" onClick={(e) => { e.preventDefault(); scrollToTop(); }}>Início</a>
-            <a href="#sobre">Sobre</a>
-            <a href="#produtos">Produtos</a>
-            <a href="#contato">Contato</a>
+          <div className="logo-container">
+            <div className="logo">
+              <img 
+                src="/images/logo.png"
+                alt="Logo Unik Móveis Planejados"
+                className="mentor-photo"
+              />
+            </div>
+          </div>
+          
+          {/* Botão do menu hamburger (visível apenas no mobile) */}
+          <button 
+            className={`menu-toggle ${isMenuOpen ? 'active' : ''}`}
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label="Menu"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+          
+          <nav className={`nav ${isMenuOpen ? 'open' : ''}`}>
+            <a href="#" onClick={(e) => { e.preventDefault(); scrollToTop(); handleNavClick(); }}>Início</a>
+            <a href="#sobre" onClick={handleNavClick}>Sobre</a>
+            <a href="#produtos" onClick={handleNavClick}>Produtos</a>
+            <a href="#contato" onClick={handleNavClick}>Contato</a>
           </nav>
         </div>
       </header>
@@ -136,7 +172,7 @@ function App() {
           <div className="hero-content">
             <h2>Móveis Planejados que Transformam sua Casa</h2>
             <p>Soluções personalizadas com design exclusivo, qualidade premium e funcionalidade para cada ambiente da sua casa.</p>
-            <a href="#contato" className="btn btn-primary">Solicite um Orçamento</a>
+            <a href="#contato" className="btn btn-primary" onClick={handleNavClick}>Solicite um Orçamento</a>
             
             {/* Botões de contato rápido no hero */}
             <div className="hero-contact-buttons">
