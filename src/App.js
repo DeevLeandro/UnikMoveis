@@ -609,7 +609,7 @@ function App() {
           </div>
           <div className="footer-bottom">
             <p>&copy; {new Date().getFullYear()} Unik Móveis Planejados. Todos os direitos reservados.</p>
-            <p>CNPJ: 18.476.582/0001-42</p>
+            <p>CNPJ: 56.283.551/0001-64</p>
           </div>
         </div>
       </footer>
