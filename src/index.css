@@ -229,6 +229,14 @@ code {
   line-height: 1.6;
 }
 
+.fabrication-highlight {
+  background-color: rgba(228, 207, 154, 0.2);
+  padding: 15px;
+  border-radius: 8px;
+  border-left: 4px solid var(--cor-secundaria);
+  margin-bottom: 25px !important;
+}
+
 .hero-contact-buttons {
   display: flex;
   justify-content: center;
@@ -318,6 +326,113 @@ code {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
+/* Por que escolher a Unik */
+.why-choose-us {
+  background-color: var(--branco);
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.feature-card {
+  background-color: var(--cinza-claro);
+  padding: 30px;
+  border-radius: 8px;
+  text-align: center;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--cor-secundaria);
+  box-shadow: 0 10px 30px rgba(45, 56, 54, 0.1);
+}
+
+.feature-icon {
+  width: 50px;
+  height: 50px;
+  background-color: var(--cor-secundaria);
+  color: var(--cor-primaria);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin: 0 auto 20px;
+}
+
+.feature-card h3 {
+  color: var(--cor-primaria);
+  margin-bottom: 15px;
+  font-size: 1.4rem;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.feature-card p {
+  color: var(--cinza-medio);
+  line-height: 1.5;
+}
+
+/* CTA Container - CENTRALIZADO */
+.cta-container {
+  text-align: center;
+  margin-top: 60px;
+  padding: 40px;
+  background-color: var(--cinza-claro);
+  border-radius: 8px;
+  border: 2px solid var(--cor-secundaria);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cta-centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.cta-button-center {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 25px;
+}
+
+.cta-container h3 {
+  color: var(--cor-primaria);
+  margin-bottom: 15px;
+  font-size: 1.8rem;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+}
+
+.cta-container p {
+  color: var(--cinza-medio);
+  margin-bottom: 25px;
+  font-size: 1.1rem;
+  max-width: 800px;
+}
+
+/* Garantir que botões dentro do CTA fiquem centralizados */
+.cta-container .btn-contact-whatsapp,
+.cta-container .btn-primary {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
 /* Produtos */
 .produtos {
   background-color: var(--branco);
@@ -377,6 +492,66 @@ code {
 .product-info p {
   color: var(--cinza-medio);
   line-height: 1.5;
+}
+
+/* Depoimentos */
+.testimonials {
+  background-color: var(--cinza-claro);
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.testimonial-card {
+  background-color: var(--branco);
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease;
+  border: 2px solid transparent;
+  position: relative;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--cor-secundaria);
+  box-shadow: 0 10px 30px rgba(45, 56, 54, 0.1);
+}
+
+.testimonial-rating {
+  color: #FFD700;
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+}
+
+.testimonial-text {
+  font-style: italic;
+  color: var(--cor-primaria);
+  line-height: 1.6;
+  margin-bottom: 20px;
+  font-size: 1.1rem;
+}
+
+.testimonial-author {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid rgba(45, 56, 54, 0.1);
+  padding-top: 15px;
+}
+
+.testimonial-author strong {
+  color: var(--cor-primaria);
+  font-family: 'Montserrat', sans-serif;
+}
+
+.testimonial-author span {
+  color: var(--cinza-medio);
+  font-size: 0.9rem;
 }
 
 /* Contato */
@@ -718,7 +893,7 @@ code {
     flex-direction: column;
   }
   
-  .footer-content, .contact-info-section {
+  .footer-content, .contact-info-section, .features-grid, .testimonials-grid {
     grid-template-columns: repeat(2, 1fr);
   }
   
@@ -823,7 +998,7 @@ code {
     gap: 15px;
   }
   
-  .products-grid {
+  .products-grid, .features-grid, .testimonials-grid {
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   }
   
@@ -853,6 +1028,8 @@ code {
   .btn-contact-whatsapp, .btn-contact-instagram {
     justify-content: center;
     padding: 12px 15px;
+    width: 100%;
+    max-width: 300px;
   }
   
   .floating-whatsapp, .floating-top {
@@ -872,10 +1049,52 @@ code {
   .section:first-of-type {
     padding-top: 40px;
   }
+  
+  /* Botões maiores no mobile */
+  .btn, .btn-primary, .btn-submit, .btn-contact-whatsapp, .btn-contact-instagram {
+    padding: 14px 20px;
+    font-size: 1rem;
+  }
+  
+  .floating-whatsapp button, .floating-top button {
+    padding: 14px 18px;
+    font-size: 0.95rem;
+  }
+  
+  .floating-whatsapp {
+    bottom: 90px;
+  }
+  
+  .floating-top {
+    bottom: 20px;
+  }
+  
+  /* CTA ajustes mobile */
+  .cta-container {
+    padding: 25px 20px;
+    margin-top: 40px;
+  }
+  
+  .cta-container h3 {
+    font-size: 1.5rem;
+  }
+  
+  .cta-container p {
+    font-size: 1rem;
+  }
+  
+  .cta-button-center {
+    width: 100%;
+  }
+  
+  .cta-container .btn-contact-whatsapp {
+    width: 100%;
+    max-width: 300px;
+  }
 }
 
 @media (max-width: 576px) {
-  .footer-content, .contact-info-section {
+  .footer-content, .contact-info-section, .features-grid, .testimonials-grid {
     grid-template-columns: 1fr;
   }
   
@@ -891,7 +1110,7 @@ code {
     font-size: 1.8rem;
   }
   
-  .contact-card {
+  .contact-card, .feature-card, .testimonial-card {
     padding: 20px;
   }
   
@@ -903,10 +1122,23 @@ code {
   .btn-map, .btn-whatsapp, .btn-instagram,
   .btn {
     font-size: 0.95rem;
-    padding: 10px 20px;
+    padding: 12px 20px;
   }
   
-  .hero p, .sobre-text p, .product-info p, .contact-card p {
+  .hero p, .sobre-text p, .product-info p, .contact-card p,
+  .feature-card p, .testimonial-text {
     font-size: 1rem;
+  }
+  
+  .cta-container {
+    padding: 20px 15px;
+  }
+  
+  .cta-container h3 {
+    font-size: 1.4rem;
+  }
+  
+  .cta-container p {
+    font-size: 0.95rem;
   }
 }

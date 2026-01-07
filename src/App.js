@@ -5,6 +5,7 @@ function App() {
     nome: '',
     email: '',
     telefone: '',
+    cidade: '',
     projeto: '',
     mensagem: ''
   });
@@ -40,16 +41,18 @@ function App() {
     });
   };
 
+  // Função para enviar formulário de orçamento
   const handleSubmit = (e) => {
     e.preventDefault();
     
-    // Criar mensagem para WhatsApp
-    const whatsappMessage = `Olá Unik Móveis Planejados! Gostaria de solicitar um orçamento.%0A%0A` +
+    // Criar mensagem para WhatsApp - ORÇAMENTO
+    const whatsappMessage = `Olá Unik Móveis Planejados! Gostaria de solicitar um orçamento gratuito.%0A%0A` +
       `*Nome:* ${formData.nome}%0A` +
       `*E-mail:* ${formData.email}%0A` +
       `*Telefone:* ${formData.telefone}%0A` +
-      `*Projeto:* ${formData.projeto}%0A` +
-      `*Mensagem:* ${formData.mensagem}`;
+      `*Cidade:* ${formData.cidade || 'Não informada'}%0A` +
+      `*Tipo de Projeto:* ${formData.projeto}%0A` +
+      `*Detalhes do Projeto:* ${formData.mensagem || 'Sem detalhes adicionais'}`;
     
     // Número da empresa (formatado)
     const whatsappNumber = '5548991976131';
@@ -62,6 +65,7 @@ function App() {
       nome: '',
       email: '',
       telefone: '',
+      cidade: '',
       projeto: '',
       mensagem: ''
     });
@@ -71,6 +75,46 @@ function App() {
     setTimeout(() => {
       setSubmitted(false);
     }, 5000);
+  };
+
+  // Função para abrir WhatsApp com mensagem de DÚVIDAS
+  const openWhatsAppDuvidas = () => {
+    const whatsappMessage = `Olá Unik Móveis Planejados! Tenho algumas dúvidas sobre móveis planejados e gostaria de conversar com vocês. Podem me ajudar?`;
+    
+    const whatsappNumber = '5548991976131';
+    window.open(`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`, '_blank');
+  };
+
+  // Função para abrir WhatsApp com mensagem de PROJETO PERSONALIZADO
+  const openWhatsAppProjetoPersonalizado = () => {
+    const whatsappMessage = `Olá Unik! Estou procurando uma solução personalizada de móveis planejados que não encontrei em seu portfólio. Gostaria de discutir uma ideia específica com vocês. Podemos conversar?`;
+    
+    const whatsappNumber = '5548991976131';
+    window.open(`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`, '_blank');
+  };
+
+  // Função para abrir WhatsApp com mensagem de CONTATO RÁPIDO (Hero)
+  const openWhatsAppContatoRapido = () => {
+    const whatsappMessage = `Olá Unik Móveis Planejados! Estou visitando seu site e gostaria de mais informações sobre seus serviços. Podem me ajudar?`;
+    
+    const whatsappNumber = '5548991976131';
+    window.open(`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`, '_blank');
+  };
+
+  // Função para abrir WhatsApp com mensagem do BOTÃO FLUTUANTE
+  const openWhatsAppOrcamentoFlutuante = () => {
+    const whatsappMessage = `Olá Unik Móveis Planejados! Gostaria de solicitar um orçamento gratuito para móveis planejados. Podem me atender?`;
+    
+    const whatsappNumber = '5548991976131';
+    window.open(`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`, '_blank');
+  };
+
+  // Função para abrir WhatsApp do card de contato
+  const openWhatsAppContatoDireto = () => {
+    const whatsappMessage = `Olá Unik Móveis Planejados! Gostaria de falar diretamente com um consultor sobre móveis planejados.`;
+    
+    const whatsappNumber = '5548991976131';
+    window.open(`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`, '_blank');
   };
 
   // Função para rolar para o topo
@@ -131,6 +175,58 @@ function App() {
     }
   ];
 
+  const testimonials = [
+    {
+      id: 1,
+      name: 'Ana Silva',
+      city: 'Florianópolis',
+      text: 'Ficamos impressionados com a qualidade! O projeto da cozinha superou todas as expectativas. A equipe foi muito profissional e atenciosa.',
+      rating: 5
+    },
+    {
+      id: 2,
+      name: 'Carlos Mendes',
+      city: 'São José',
+      text: 'Ótimo custo-benefício! O closet que fizeram para nós é perfeito. A fabricação própria faz toda diferença na qualidade final.',
+      rating: 5
+    },
+    {
+      id: 3,
+      name: 'Mariana Costa',
+      city: 'Palhoça',
+      text: 'Atendimento excelente desde o primeiro contato. O home office ficou exatamente como imaginávamos. Recomendo a todos!',
+      rating: 5
+    }
+  ];
+
+  const whyChooseUs = [
+    {
+      id: 1,
+      title: 'Fabricação Própria',
+      description: 'Controlamos todo o processo de produção, garantindo qualidade superior e prazos cumpridos'
+    },
+    {
+      id: 2,
+      title: 'Projeto Personalizado',
+      description: 'Cada móvel é desenvolvido especialmente para você, considerando seu espaço, necessidades e estilo'
+    },
+    {
+      id: 3,
+      title: 'Equipe Especializada',
+      description: 'Profissionais qualificados com anos de experiência em móveis planejados e design de interiores'
+    },
+    {
+      id: 4,
+      title: 'Acompanhamento Completo',
+      description: 'Do projeto à instalação final, estamos com você em todas as etapas, garantindo total satisfação'
+    },
+    {
+      id: 5,
+      title: 'Materiais de Qualidade',
+      description: 'Trabalhamos apenas com os melhores fornecedores e materiais duráveis, certificados e sustentáveis'
+    }
+  ];
+
   return (
     <div className="App">
       {/* Header */}
@@ -161,6 +257,7 @@ function App() {
             <a href="#" onClick={(e) => { e.preventDefault(); scrollToTop(); handleNavClick(); }}>Início</a>
             <a href="#sobre" onClick={handleNavClick}>Sobre</a>
             <a href="#produtos" onClick={handleNavClick}>Produtos</a>
+            <a href="#depoimentos" onClick={handleNavClick}>Depoimentos</a>
             <a href="#contato" onClick={handleNavClick}>Contato</a>
           </nav>
         </div>
@@ -171,12 +268,15 @@ function App() {
         <div className="container">
           <div className="hero-content">
             <h2>Móveis Planejados que Transformam sua Casa</h2>
-            <p>Soluções personalizadas com design exclusivo, qualidade premium e funcionalidade para cada ambiente da sua casa.</p>
-            <a href="#contato" className="btn btn-primary" onClick={handleNavClick}>Solicite um Orçamento</a>
+            <p className="fabrication-highlight">
+              <strong>Fabricação própria de móveis planejados</strong> - Soluções personalizadas com design exclusivo, 
+              qualidade premium e funcionalidade para cada ambiente da sua casa.
+            </p>
+            <a href="#contato" className="btn btn-primary" onClick={handleNavClick}>Solicite seu orçamento gratuito</a>
             
             {/* Botões de contato rápido no hero */}
             <div className="hero-contact-buttons">
-              <button className="btn-contact-whatsapp" onClick={() => window.open('https://wa.me/5548991976131', '_blank')}>
+              <button className="btn-contact-whatsapp" onClick={openWhatsAppContatoRapido}>
                 <i className="whatsapp-icon">📱</i> Fale conosco no WhatsApp
               </button>
               <button className="btn-contact-instagram" onClick={openInstagram}>
@@ -193,15 +293,19 @@ function App() {
           <h2 className="section-title">Sobre a Unik Móveis Planejados</h2>
           <div className="sobre-content">
             <div className="sobre-text">
-              <p>A Unik cria móveis planejados com design, funcionalidade e qualidade.</p>
-              <p>Transformamos espaço com soluções sob medida, garantindo sofisticação e durabilidade para seu ambiente.</p>
+              <p>A Unik é especializada em <strong>fabricação própria de móveis planejados</strong>, 
+              combinando design, funcionalidade e qualidade superior em cada projeto.</p>
+              <p>Nossa <strong>equipe especializada</strong> transforma espaços com soluções <strong>sob medida</strong>, 
+              garantindo sofisticação, durabilidade e total satisfação para seu ambiente.</p>
               <ul className="features">
-                <li>Projeto personalizado</li>
-                <li>Material de alta qualidade</li>
-                <li>Entrega e instalação</li>
-                <li>Garantia de 2 anos</li>
+                <li>Fabricamos todos os móveis em nossa própria fábrica</li>
+                <li>Projeto 100% personalizado para suas necessidades</li>
+                <li>Equipe especializada com anos de experiência</li>
+                <li>Material de alta qualidade e durabilidade</li>
+                <li>Entrega e instalação com excelência</li>
+                <li>Garantia de 2 anos em todos os projetos</li>
                 <li>Atendimento em Florianópolis e região</li>
-                <li>Orçamento sem compromisso</li>
+                <li>Orçamento gratuito e sem compromisso</li>
               </ul>
             </div>
             <div className="sobre-image">
@@ -211,11 +315,36 @@ function App() {
         </div>
       </section>
 
+      {/* Por que escolher a Unik */}
+      <section className="section why-choose-us">
+        <div className="container">
+          <h2 className="section-title">Por que escolher a Unik?</h2>
+          <p className="section-subtitle">Conheça os diferenciais que fazem da Unik a melhor escolha para seus móveis planejados</p>
+          
+          <div className="features-grid">
+            {whyChooseUs.map(item => (
+              <div key={item.id} className="feature-card">
+                <div className="feature-icon">{item.id}</div>
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+              </div>
+            ))}
+          </div>
+          
+          {/* CTA após por que escolher */}
+          <div className="cta-container">
+            <h3>Pronto para transformar seu espaço?</h3>
+            <p>Solicite agora seu orçamento gratuito e sem compromisso!</p>
+            <a href="#contato" className="btn btn-primary" onClick={handleNavClick}>Solicite seu orçamento gratuito</a>
+          </div>
+        </div>
+      </section>
+
       {/* Produtos */}
       <section id="produtos" className="section produtos">
         <div className="container">
-          <h2 className="section-title">Nossos Produtos</h2>
-          <p className="section-subtitle">Conheça algumas de nossas soluções em móveis planejados</p>
+          <h2 className="section-title">Nossas Soluções</h2>
+          <p className="section-subtitle">Exemplos de projetos que realizamos - Trabalhamos com soluções personalizadas sob medida</p>
           <div className="products-grid">
             {products.map(product => (
               <div key={product.id} className="product-card">
@@ -229,14 +358,48 @@ function App() {
               </div>
             ))}
           </div>
+          
+          {/* CTA após produtos - CENTRALIZADO */}
+          <div className="cta-container cta-centered">
+            <h3>Não encontrou o que procura?</h3>
+            <p>Todos os nossos projetos são desenvolvidos sob medida! Converse com nossa equipe e crie a solução perfeita para você.</p>
+            <div className="cta-button-center">
+              <button className="btn-contact-whatsapp" onClick={openWhatsAppProjetoPersonalizado}>
+                <i className="whatsapp-icon">💬</i> Falar no WhatsApp agora
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Depoimentos */}
+      <section id="depoimentos" className="section testimonials">
+        <div className="container">
+          <h2 className="section-title">O que nossos clientes dizem</h2>
+          <p className="section-subtitle">A satisfação dos nossos clientes é nossa maior conquista</p>
+          
+          <div className="testimonials-grid">
+            {testimonials.map(testimonial => (
+              <div key={testimonial.id} className="testimonial-card">
+                <div className="testimonial-rating">
+                  {'★'.repeat(testimonial.rating)}
+                </div>
+                <p className="testimonial-text">"{testimonial.text}"</p>
+                <div className="testimonial-author">
+                  <strong>{testimonial.name}</strong>
+                  <span>{testimonial.city}</span>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* Contato */}
       <section id="contato" className="section contato">
         <div className="container">
-          <h2 className="section-title">Solicite um Orçamento</h2>
-          <p className="section-subtitle">Preencha o formulário abaixo e será direcionado ao WhatsApp da nossa equipe</p>
+          <h2 className="section-title">Solicite seu orçamento gratuito</h2>
+          <p className="section-subtitle">Preencha o formulário abaixo e será direcionado ao WhatsApp da nossa equipe - Sem compromisso!</p>
           
           {submitted ? (
             <div className="success-message">
@@ -288,6 +451,21 @@ function App() {
                     />
                   </div>
                   <div className="form-group">
+                    <label htmlFor="cidade">Cidade *</label>
+                    <input
+                      type="text"
+                      id="cidade"
+                      name="cidade"
+                      value={formData.cidade}
+                      onChange={handleChange}
+                      required
+                      placeholder="Sua cidade (ex: Florianópolis)"
+                    />
+                  </div>
+                </div>
+                
+                <div className="form-row">
+                  <div className="form-group">
                     <label htmlFor="projeto">Tipo de Projeto *</label>
                     <select 
                       id="projeto" 
@@ -321,11 +499,13 @@ function App() {
                 </div>
                 
                 <button type="submit" className="btn btn-primary btn-submit">
-                  <i className="whatsapp-icon">💬</i> Enviar para WhatsApp
+                  <i className="whatsapp-icon">💬</i> Solicitar orçamento via WhatsApp
                 </button>
                 
                 <p className="form-note">
                   Ao enviar, você será direcionado automaticamente para o WhatsApp da Unik Móveis Planejados.
+                  <br />
+                  <strong>Orçamento 100% gratuito e sem compromisso!</strong>
                 </p>
               </form>
             </div>
@@ -348,7 +528,7 @@ function App() {
               <h3>Contato Direto</h3>
               <p><strong>Telefone/WhatsApp:</strong></p>
               <p>(48) 99197-6131</p>
-              <button className="btn-whatsapp" onClick={() => window.open('https://wa.me/5548991976131', '_blank')}>
+              <button className="btn-whatsapp" onClick={openWhatsAppContatoDireto}>
                 <i className="whatsapp-icon">💬</i> Chamar no WhatsApp
               </button>
             </div>
@@ -361,14 +541,25 @@ function App() {
               </button>
             </div>
           </div>
+
+          {/* CTA extra após informações de contato */}
+          <div className="cta-container cta-centered" style={{marginTop: '40px'}}>
+            <h3>Ainda com dúvidas?</h3>
+            <p>Fale diretamente com nossa equipe e tire todas as suas dúvidas sobre móveis planejados.</p>
+            <div className="cta-button-center">
+              <button className="btn-contact-whatsapp" onClick={openWhatsAppDuvidas}>
+                <i className="whatsapp-icon">💬</i> Tire suas dúvidas no WhatsApp
+              </button>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* Botão flutuante para WhatsApp */}
       <div className="floating-whatsapp">
-        <button onClick={() => window.open('https://wa.me/5548991976131', '_blank')}>
+        <button onClick={openWhatsAppOrcamentoFlutuante}>
           <i className="whatsapp-icon">💬</i>
-          <span>Fale conosco</span>
+          <span>Orçamento gratuito</span>
         </button>
       </div>
 
@@ -386,7 +577,7 @@ function App() {
           <div className="footer-content">
             <div className="footer-info">
               <h3>Unik Móveis Planejados</h3>
-              <p>Transformando ambientes com design e funcionalidade desde 2013.</p>
+              <p><strong>Fabricação própria de móveis planejados</strong> - Transformando ambientes com design e funcionalidade desde 2013.</p>
               <div className="contact-info">
                 <p><strong>WhatsApp:</strong> (48) 99197-6131</p>
                 <p><strong>E-mail:</strong> planejadosunik@gmail.com</p>
@@ -397,8 +588,9 @@ function App() {
               <h4>Links Rápidos</h4>
               <a href="#" onClick={(e) => { e.preventDefault(); scrollToTop(); }}>Início</a>
               <a href="#sobre">Sobre nós</a>
-              <a href="#produtos">Produtos</a>
-              <a href="#contato">Contato</a>
+              <a href="#produtos">Soluções</a>
+              <a href="#depoimentos">Depoimentos</a>
+              <a href="#contato">Orçamento gratuito</a>
             </div>
             <div className="footer-social">
               <h4>Siga-nos</h4>
@@ -406,7 +598,7 @@ function App() {
                 <button className="social-btn instagram-btn" onClick={openInstagram}>
                   Instagram
                 </button>
-                <button className="social-btn whatsapp-btn" onClick={() => window.open('https://wa.me/5548991976131', '_blank')}>
+                <button className="social-btn whatsapp-btn" onClick={openWhatsAppContatoDireto}>
                   WhatsApp
                 </button>
                 <button className="social-btn map-btn" onClick={openGoogleMaps}>
