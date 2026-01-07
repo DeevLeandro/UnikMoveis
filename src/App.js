@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './App.css';
+
 
 function App() {
   const [formData, setFormData] = useState({
@@ -75,37 +75,37 @@ function App() {
       id: 1,
       name: 'Cozinha Completa',
       description: 'Cozinha planejada com ilha, armários superiores e inferiores',
-      image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80'
+      image: '/images/Cozinha.webp'
     },
     {
       id: 2,
       name: 'Home Office',
       description: 'Escritório planejado com prateleiras, mesa e armários',
-      image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80'
+      image: '/images/HomeOffice.jpg'
     },
     {
       id: 3,
       name: 'Quarto Infantil',
       description: 'Quarto completo com cama, guarda-roupas e área de estudo',
-      image: 'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80'
+      image: '/images/QuartoInfantil.jpg'
     },
     {
       id: 4,
       name: 'Sala de Estar',
       description: 'Painéis de TV, estantes e armários para sala de estar',
-      image: 'https://images.unsplash.com/photo-1616486029423-aaa4789e8c9a?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80'
+      image: '/images/SaladeEstar.webp'
     },
     {
       id: 5,
       name: 'Banheiro Planejado',
       description: 'Armários e nichos para banheiro com máxima funcionalidade',
-      image: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80'
+      image: '/images/BanheiroPlanejado.jpeg'
     },
     {
       id: 6,
       name: 'Closet Exclusivo',
       description: 'Closet planejado com portas de correr, gavetas e prateleiras',
-      image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80'
+      image: '/images/ClosetExclusivo.webp'
     }
   ];
 
@@ -115,9 +115,12 @@ function App() {
       <header className="header">
         <div className="container">
           <div className="logo">
-            <h1>Unik Móveis Planejados</h1>
-            <p className="tagline">Seu sonho nosso projeto.</p>
-          </div>
+          <img 
+            src="/images/logo.png"
+            alt="Logo Unik Móveis Planejados"
+            className="mentor-photo"
+          />
+        </div>
           <nav className="nav">
             <a href="#" onClick={(e) => { e.preventDefault(); scrollToTop(); }}>Início</a>
             <a href="#sobre">Sobre</a>
@@ -166,7 +169,7 @@ function App() {
               </ul>
             </div>
             <div className="sobre-image">
-              <img src="https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Equipe Unik Móveis Planejados" />
+              <img src="/images/Banner.webp" alt="Equipe Unik Móveis Planejados" />
             </div>
           </div>
         </div>
